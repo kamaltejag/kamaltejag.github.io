@@ -1,31 +1,85 @@
 User-agent: *
-Allow: /
+Disallow: /gift/
+Disallow: /paeves/
 
 User-agent: GPTBot
-Allow: /
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
 
 User-agent: OAI-SearchBot
-Allow: /
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
 
 User-agent: ChatGPT-User
-Allow: /
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
 
 User-agent: ClaudeBot
-Allow: /
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
 
 User-agent: Claude-SearchBot
-Allow: /
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
 
 User-agent: Claude-User
-Allow: /
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
+
+User-agent: anthropic-ai
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
 
 User-agent: PerplexityBot
-Allow: /
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
+
+User-agent: Perplexity-User
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
 
 User-agent: Google-Extended
-Allow: /
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
 
 User-agent: Applebot-Extended
-Allow: /
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
+
+User-agent: CCBot
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
+
+User-agent: Bytespider
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
+
+User-agent: Amazonbot
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
+
+User-agent: cohere-ai
+Allow: /portfolio/
+Allow: /llms.txt
+Disallow: /
 
 Sitemap: https://kamaltejag.github.io/sitemap.xml
