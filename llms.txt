@@ -1,0 +1,40 @@
+# Kamal Teja
+
+> Backend software engineer in Hyderabad, India, working mostly in Java and Spring Boot. Currently a Software Engineer at Matillion; before that, Software Engineer at Prefr (a lending app, now part of CRED) from 2021 to 2025. From 2019 to 2024 he ran Packetcode, a programming YouTube channel with 17.4K subscribers. He likes building things to see how they work.
+
+Main site: https://kamaltejag.github.io/portfolio/
+
+## Profile
+
+- [Portfolio](https://kamaltejag.github.io/portfolio/): projects, YouTube, and work history
+- [Resume (PDF)](https://kamaltejag.github.io/portfolio/resume.pdf): one-page resume
+- [LinkedIn](https://www.linkedin.com/in/kamaltejag/)
+- [GitHub](https://github.com/kamaltejag)
+- [YouTube: Packetcode](https://www.youtube.com/@packetcode)
+- Email: kamaltejag@gmail.com
+
+## Work
+
+- Matillion, Software Engineer (2025 to present): worked on the multi-tenant Connections framework and moved 55K+ customer projects onto it; built a memory layer for Claude Code that started as a hackday project and caught on with the team.
+- Prefr, Software Engineer (2021 to 2025): worked on the services behind credit applications, including a Vert.x rewrite that cut response times by 40%, a NATS pipeline for SMS, WhatsApp and email updates, and the credit bureau integrations.
+
+## Skills
+
+Java, Spring Boot, Vert.x, NATS, Kafka, Redis, PostgreSQL, MongoDB, AWS, Docker, building with AI coding agents.
+
+## Projects
+
+- [Plamaco](https://plamaco.com/): an app that keeps track of what's in your kitchen and suggests recipes from it, built end to end with AI coding tools. Live on the App Store.
+- [Brevify](https://github.com/kamaltejag/brevify): a URL shortener in Spring Boot, with Redis keeping redirects fast and Kafka handling click tracking.
+- [Disappr](https://github.com/kamaltejag/disappr) (2018): anonymous messages that delete themselves after a set time.
+- [COVID-19 tracker](https://github.com/kamaltejag/corona-tracker) (2020): Johns Hopkins data in PHP, made for a Packetcode video.
+- [Vehicle tracker](https://github.com/kamaltejag/tracker) (2020): web app for an IoT vehicle-tracking project.
+- [FAAMS](https://github.com/kamaltejag/faams) (2021): face-recognition attendance system.
+- [Pneumonia detection](https://github.com/kamaltejag/cnn-for-pneumonia-detection) (2021): a CNN trained to detect pneumonia.
+
+## Packetcode videos
+
+- [Docker Crash Course](https://www.youtube.com/watch?v=KI55G4FzDY0)
+- [Face Recognition using OpenCV](https://www.youtube.com/watch?v=q3scbgkw3lo)
+- [Complete Git Crash Course](https://www.youtube.com/watch?v=wEAj_xPXeOs)
+- [Jenkins Crash Course](https://www.youtube.com/watch?v=0RmktpIrKJY)

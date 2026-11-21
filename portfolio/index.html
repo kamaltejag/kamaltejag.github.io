@@ -1,402 +1,442 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){
+  var root=document.documentElement,saved=null;
+  try{saved=localStorage.getItem('theme');}catch(e){}
+  root.setAttribute('data-theme',saved||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+  root.classList.add('js');
+})();
+</script>
+<title>Kamal Teja</title>
+<meta name="description" content="Kamal Teja likes building things to see how they work. Side projects, five years of Packetcode on YouTube, and the day job.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kamaltejag.github.io/portfolio/">
+<meta property="og:title" content="Kamal Teja">
+<meta property="og:description" content="I like building things to see how they work.">
+<meta property="og:image" content="https://github.com/kamaltejag.png">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://kamaltejag.github.io/portfolio/">
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="llms.txt">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "https://kamaltejag.github.io/portfolio/",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Kamal Teja",
+    "url": "https://kamaltejag.github.io/portfolio/",
+    "image": "https://github.com/kamaltejag.png",
+    "email": "mailto:kamaltejag@gmail.com",
+    "jobTitle": "Software Engineer",
+    "description": "Backend software engineer working mostly in Java and Spring Boot. Ran the Packetcode programming YouTube channel from 2019 to 2024.",
+    "worksFor": {"@type": "Organization", "name": "Matillion", "url": "https://www.matillion.com/"},
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "Jawaharlal Nehru Technological University"},
+    "address": {"@type": "PostalAddress", "addressLocality": "Hyderabad", "addressCountry": "IN"},
+    "knowsAbout": ["Java", "Spring Boot", "Vert.x", "NATS", "Kafka", "Redis", "PostgreSQL", "Docker", "Backend engineering", "AI coding agents"],
+    "sameAs": ["https://www.linkedin.com/in/kamaltejag/", "https://github.com/kamaltejag", "https://www.youtube.com/@packetcode"]
+  }
+}
+</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👋</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.css" integrity="sha384-gvLq/iOMNnPchdosgVym5huSVkKipHCQaqSw2Eg0V52Mzmlf169ZOsXcNc2cNu8x" crossorigin="anonymous">
+<style>
+:root{
+  --bg:#ffffff;--surface:#ffffff;--band:#f7f8fa;--chip:#eef3ff;--chip-ink:#1d4ed8;
+  --ink:#0b0b0f;--muted:#5b5f6b;--line:#e2e5eb;
+  --accent:#1d4ed8;--accent-soft:#1d4ed81f;--accent-2:#d61f6c;--accent-2-soft:#d61f6c22;
+  --glow:none;--shadow:0 1px 2px #0f172a0a,0 10px 28px -14px #0f172a29;
+  --bw:1.5px;--hair:1px;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+  --radius:18px;--max:1080px;--nav-h:64px;--job-logo:44px;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#08090c;--surface:#111318;--band:#111318;--chip:#1a1d24;--chip-ink:var(--ink);
+  --ink:#f5f6f8;--muted:#9aa0ab;--line:#2c303a;
+  --accent:#3b82f6;--accent-soft:#3b82f626;--accent-2:#ff4f9a;--accent-2-soft:#ff4f9a2e;
+  --glow:0 0 18px #3b82f688,0 0 42px #3b82f644;--shadow:none;
+  --bw:2px;--hair:1.5px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-size:13px;letter-spacing:.04em}
+.kicker{color:var(--muted);margin-bottom:14px}
+.panel{background:var(--surface);border:var(--bw) solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.lift{transition:transform .25s,border-color .25s,box-shadow .25s}
+.lift:hover{transform:translateY(-4px);border-color:var(--accent)}
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    />
+nav{position:sticky;top:0;z-index:10;background:var(--bg);background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:var(--hair) solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:16px}
+.logo{font:800 20px var(--display);letter-spacing:-.02em}
+.logo span{color:var(--accent-2)}
+.links{display:flex;align-items:center;gap:22px}
+.links a:not(.btn){position:relative;color:var(--muted);font-size:15px;font-weight:500;transition:color .2s}
+.links a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--accent-2);transform:scaleX(0);transition:transform .3s ease}
+.links a:not(.btn):hover,.links a.active{color:var(--ink)}
+.links a.active::after{transform:scaleX(1)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font:600 15px var(--body);border:var(--bw) solid var(--ink);transition:transform .2s,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.links .btn{padding:7px 16px}
+.links .btn:hover{background:var(--ink);color:var(--bg)}
+.theme{background:none;border:var(--bw) solid var(--line);color:var(--ink);width:36px;height:36px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.theme svg{grid-area:1/1;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .5s ease-out,opacity .5s ease-out}
+.theme .moon{transform:rotate(-90deg) scale(0);opacity:0}
+.theme .sun{transform:rotate(90deg) scale(0);opacity:0}
+:root[data-theme="light"] .theme .moon,:root[data-theme="dark"] .theme .sun{transform:none;opacity:1}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-new(root){z-index:1}
+::view-transition-old(root){z-index:0}
 
-    <!-- Bootstrap Js -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+.hero{padding:88px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:center}
+.hello b{color:var(--accent-2);font-weight:500}
+h1{font:800 clamp(56px,10vw,118px)/.92 var(--display);letter-spacing:-.045em}
+h1 .accent{color:var(--accent)}
+.lede{font-size:clamp(19px,2.2vw,23px);line-height:1.5;margin:26px 0 34px;max-width:30ch}
+.lede em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-2-soft) 62%)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.photo{position:relative;justify-self:center;width:min(360px,80vw);aspect-ratio:1}
+.photo img{width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;border:6px solid var(--bg)}
+.photo::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:3px solid var(--accent);box-shadow:var(--glow);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.03);opacity:.75}}
 
-    <!-- My CSS -->
-    <link rel="stylesheet" href="style.css" />
+.ticker{border-block:var(--hair) solid var(--line);overflow:hidden;padding:16px 0;background:var(--band)}
+.ticker-track{display:flex;width:max-content}
+.ticker-track.loop{animation:slide 38s linear infinite}
+.ticker span{font:500 15px var(--mono);color:var(--muted);padding:0 22px;white-space:nowrap}
+.ticker span::after{content:"✦";color:var(--accent-2);margin-left:44px}
+@keyframes slide{to{transform:translateX(-50%)}}
 
-    <!-- My Javascript -->
-    <script src="main.js"></script>
+section.wrap{padding-top:112px;scroll-margin-top:var(--nav-h)}
+.label{display:flex;align-items:center;gap:14px;margin-bottom:12px;color:var(--accent-2)}
+.label::after{content:"";flex:1;border-bottom:var(--bw) dotted var(--line)}
+h2{font:800 clamp(36px,5.4vw,58px)/1 var(--display);letter-spacing:-.035em;margin-bottom:18px}
+.intro{color:var(--muted);max-width:60ch;margin-bottom:40px}
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/996973c893.js"></script>
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+.about p+p{margin-top:16px}
+blockquote{padding:28px;font:500 22px/1.4 var(--display);letter-spacing:-.01em;position:relative}
+blockquote::before{content:"“";position:absolute;top:-28px;left:18px;font:800 90px/1 var(--display);color:var(--accent-2)}
+blockquote cite{display:block;margin-top:14px;font:400 14px var(--mono);color:var(--muted);font-style:normal}
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700;800&family=Roboto+Slab:wght@200;400;600;900&display=swap"
-      rel="stylesheet"
-    />
+.featured{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.card{padding:30px;display:flex;flex-direction:column}
+.card:hover{box-shadow:0 18px 40px -18px var(--accent)}
+.card .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;color:var(--muted)}
+.card .arrow{font-size:22px;color:var(--accent);transition:transform .25s}
+.card:hover .arrow{transform:translate(3px,-3px)}
+.card h3{font:800 34px/1.05 var(--display);letter-spacing:-.03em;margin-bottom:12px}
+.card p{color:var(--muted);flex:1}
+.card.big{background:linear-gradient(140deg,var(--surface) 55%,var(--accent-soft))}
+.card.more{border-style:dashed;background:transparent;box-shadow:none}
+.card.mini{padding:22px}
+.card.mini .top{margin-bottom:14px}
+.card.mini h3{font-size:21px;margin-bottom:8px}
+.card.mini p{font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tags span{font:500 12px var(--mono);padding:5px 10px;border-radius:999px;background:var(--chip);color:var(--chip-ink)}
+.small-head{font:700 22px var(--display);margin:48px 0 18px;letter-spacing:-.02em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="/images/code.png"/>
+.yt-head{display:flex;flex-wrap:wrap;gap:28px;align-items:center;margin-bottom:36px}
+.yt-head .intro{margin:0;flex:1;min-width:260px}
+.channel{display:flex;align-items:center;gap:14px;padding:14px 16px 14px 14px;border-radius:999px}
+.channel img{width:56px;height:56px;border-radius:50%;flex:none;background:#fff;border:var(--bw) solid var(--line)}
+.channel-info{display:flex;flex-direction:column;line-height:1.3}
+.channel-info b{font:700 17px var(--body)}
+.channel-info span{color:var(--muted);font-size:13px}
+.subscribe{margin-left:8px;padding:9px 16px;border-radius:999px;background:var(--ink);color:var(--bg);font:600 14px var(--body);white-space:nowrap}
+.channel:hover .subscribe{background:#ff0033;color:#fff}
+.videos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.video{overflow:hidden;border-radius:14px}
+.video .thumb{position:relative;aspect-ratio:16/9;background:var(--chip)}
+.video .thumb img{width:100%;height:100%;object-fit:cover}
+.video .thumb::after{content:"▶";position:absolute;left:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:12px;padding-left:2px}
+.video p{padding:14px 16px 16px;font:600 15px/1.35 var(--body)}
 
+.work{display:grid;gap:14px}
+.job{padding:26px 28px}
+.job .head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.job .head img{width:var(--job-logo);height:var(--job-logo);border-radius:12px;flex:none;object-fit:cover;background:#fff;border:var(--bw) solid var(--line)}
+.job h3{font:700 24px var(--display);letter-spacing:-.02em}
+.job h3 small{font:500 15px var(--body);color:var(--muted);margin-left:6px}
+.job .when{color:var(--muted);margin-left:auto;white-space:nowrap;padding-left:12px}
+.job .desc{color:var(--muted);max-width:72ch}
 
-    <title>Portfolio</title>
-  </head>
-  <body>
-    <!-- Navigation for Computers -->
-    <div class="container navigation pt-3 d-none d-md-block">
-      <div class="row">
-        <div class="col-6 d-flex justify-content-start align-items-center">
-          <i class="fas fa-code fa-2x text-warning pb-3"></i>
-          <h5 class="d-inline pl-2 text-white">Portfolio</h5>
-        </div>
-        <div class="col-6 pt-2">
-          <div
-            class="row text-center p-0 d-flex justify-content-end align-items-center"
-          >
-            <div class="col-4">
-              <a href="#about" class="text-white navigation-link">About</a>
-            </div>
-            <div class="col-4">
-              <a href="#projects" class="text-white navigation-link"
-                >Projects</a
-              >
-            </div>
-            <div class="col-4">
-              <a href="#social-media" class="text-white navigation-link"
-                >Social Media</a
-              >
-            </div>
-            <div class="col-3">
-              <a
-                href="https://rxresu.me/r/0prnwh"
-                target="_blank"
-                class="text-white navigation-link"
-                >Resume</a
-              >
-            </div>
-          </div>
-        </div>
+footer{margin-top:110px;padding:72px 0 40px;border-top:var(--bw) dotted var(--line);background:var(--band)}
+.say{font:800 clamp(40px,7vw,80px)/1 var(--display);letter-spacing:-.04em;margin-bottom:28px}
+.say a{color:var(--accent);text-shadow:var(--glow)}
+.socials{display:flex;flex-wrap:wrap;gap:12px}
+.socials a{padding:10px 18px;border:var(--bw) solid var(--line);border-radius:999px;font-weight:500;transition:border-color .2s,color .2s}
+.socials a:hover{border-color:var(--accent);color:var(--accent)}
+.fine{margin-top:56px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+@media (max-width:900px){
+  .hero{padding:48px 0 40px}
+  .hero .wrap,.about,.featured{grid-template-columns:1fr}
+  .photo{order:-1;width:min(240px,64vw)}
+  .grid,.videos{grid-template-columns:1fr 1fr}
+  .links a:not(.btn){display:none}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  section.wrap{padding-top:80px}
+  .grid,.videos{grid-template-columns:1fr}
+  .card{padding:24px}
+  .card h3{font-size:28px}
+  .job{padding:22px}
+  .job .head{flex-wrap:wrap}
+  .job .when{width:100%;margin-left:calc(var(--job-logo) + 14px);padding-left:0}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">kamal<span>.</span></a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#built">Projects</a>
+      <a href="#youtube">YouTube</a>
+      <a href="#work">Work</a>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch theme">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="hello mono kicker">// hello from <b>Hyderabad</b></p>
+      <h1><span class="accent">Kamal</span><br>Teja</h1>
+      <p class="lede">I like building things to see <em>how they work</em>, and for five years I explained what I learned on YouTube.</p>
+      <div class="cta">
+        <a class="btn solid" href="#built">See what I've built</a>
+        <a class="btn" href="https://youtube.com/packetcode" target="_blank" rel="noopener">YouTube ↗</a>
       </div>
     </div>
-
-    <!-- Navigation for Mobiles -->
-    <div class="container navigation pt-3 d-block d-sm-block d-md-none">
-      <div class="d-block text-center">
-        <i class="fas fa-code fa-3x text-warning pb-3"></i>
-      </div>
-      <div class="row d-flex justify-content-center align-items-center pt-3">
-        <div class="col-4 text-right">
-          <a href="#about" class="text-white navigation-link">About</a>
-        </div>
-        <div class="col-4 text-center">
-          <a href="#projects" class="text-white navigation-link">Projects</a>
-        </div>
-        <div class="col-4 text-left">
-          <a href="#social-media" class="text-white navigation-link"
-            >Social Media</a
-          >
-        </div>
-      </div>
-      <div class="d-block text-center pt-3">
-        <a
-          href="https://rxresu.me/r/0prnwh"
-          target="_blank"
-          class="btn btn-outline-warning"
-          >Resume</a
-        >
-      </div>
+    <div class="photo">
+      <img src="https://github.com/kamaltejag.png?size=720" alt="Kamal Teja smiling in front of a pink neon sign" width="360" height="360">
     </div>
+  </div>
+</header>
 
-    <!-- Main Container for Computer-->
-    <div class="main-container container d-none d-md-block">
-      <div class="row main_row">
-        <div class="col-6">
-          <h2 class="text-white">Hello, I'm</h2>
-          <h1 class="text-warning m-heading">Kamal Teja</h1>
-          <h2 class="text-white">Web Developer</h2>
-        </div>
-        <div class="col-6">
-          <img src="images/boy.png" class="img-fluid" />
-        </div>
-      </div>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Java</span><span>Spring Boot</span><span>Vert.x</span><span>NATS</span><span>Kafka</span><span>Redis</span><span>PostgreSQL</span><span>building with AI agents</span><span>explaining things simply</span>
+  </div>
+</div>
+
+<main>
+<section id="about" class="wrap reveal">
+  <p class="label mono">01 / about</p>
+  <h2>Heyy.</h2>
+  <div class="about">
+    <div>
+      <p>So... I don't know what brought you here but, since you're already here, might as well get to know a little bit about me.</p>
+      <p>I'm a backend engineer. Most days that means Java and Spring Boot, and the rest of the time it's whatever side project I can't stop thinking about.</p>
+      <p>I learn best by building something real, and I like explaining it once I get it. That's how Packetcode started.</p>
     </div>
+    <blockquote class="panel">If you can't explain it to a six-year-old, you don't understand it yourself.<cite>Albert Einstein</cite></blockquote>
+  </div>
+</section>
 
-    <!-- Main Container for Mobiles -->
-    <div
-      class="main-container-mobile container d-flex justify-content-center align-items-center d-none d-sm-block d-md-none"
-    >
-      <div class="content">
-        <h2 class="text-white">Hello, I'm</h2>
-        <h1 class="text-warning m-heading">Kamal Teja</h1>
-        <h2 class="text-white">Web Developer</h2>
+<section id="built" class="wrap reveal">
+  <p class="label mono">02 / things I've built</p>
+  <h2>Stuff I made because I wanted to.</h2>
+  <p class="intro">Some of it is polished, most of it was me poking at something until it made sense.</p>
+
+  <div class="featured">
+    <a class="card panel lift big" href="https://plamaco.com/" target="_blank" rel="noopener">
+      <div class="top"><span class="mono">App Store · live</span><span class="arrow">↗</span></div>
+      <h3>Plamaco</h3>
+      <p>An app that keeps track of what's in your kitchen and suggests recipes from it. I built it end to end with AI coding tools.</p>
+      <div class="tags"><span>mobile app</span><span>built with AI agents</span></div>
+    </a>
+    <a class="card panel lift" href="https://github.com/kamaltejag/brevify" target="_blank" rel="noopener">
+      <div class="top"><span class="mono">2025 · open source</span><span class="arrow">↗</span></div>
+      <h3>Brevify</h3>
+      <p>A URL shortener in Spring Boot. Redis keeps redirects fast, and Kafka handles the click tracking so it never slows a redirect down.</p>
+      <div class="tags"><span>Java 21</span><span>Spring Boot</span><span>Redis</span><span>PostgreSQL</span><span>Kafka</span></div>
+    </a>
+  </div>
+
+  <h3 class="small-head">Older experiments from college</h3>
+  <div class="grid">
+    <a class="card panel lift mini" href="https://github.com/kamaltejag/disappr" target="_blank" rel="noopener">
+      <div class="top"><span class="mono">2018</span><span class="arrow">↗</span></div>
+      <h3>Disappr</h3>
+      <p>Anonymous messages that delete themselves after a set time. Made for the Innovator's Challenge.</p>
+    </a>
+    <a class="card panel lift mini" href="https://github.com/kamaltejag/corona-tracker" target="_blank" rel="noopener">
+      <div class="top"><span class="mono">2020</span><span class="arrow">↗</span></div>
+      <h3>COVID-19 tracker</h3>
+      <p>Johns Hopkins data, pulled with PHP and shown as a table. I made it for a Packetcode video on building it from scratch.</p>
+    </a>
+    <a class="card panel lift mini" href="https://github.com/kamaltejag/tracker" target="_blank" rel="noopener">
+      <div class="top"><span class="mono">2020</span><span class="arrow">↗</span></div>
+      <h3>Vehicle tracker</h3>
+      <p>The web app for my IoT vehicle-tracking project, showing where the vehicle is.</p>
+    </a>
+    <a class="card panel lift mini" href="https://github.com/kamaltejag/faams" target="_blank" rel="noopener">
+      <div class="top"><span class="mono">2021</span><span class="arrow">↗</span></div>
+      <h3>FAAMS</h3>
+      <p>An attendance system that marks you present when it recognises your face.</p>
+    </a>
+    <a class="card panel lift mini" href="https://github.com/kamaltejag/cnn-for-pneumonia-detection" target="_blank" rel="noopener">
+      <div class="top"><span class="mono">2021</span><span class="arrow">↗</span></div>
+      <h3>Pneumonia detection</h3>
+      <p>A CNN trained to detect pneumonia.</p>
+    </a>
+    <a class="card panel lift mini more" href="https://github.com/kamaltejag?tab=repositories" target="_blank" rel="noopener">
+      <div class="top"><span class="mono">2019 → now</span><span class="arrow">↗</span></div>
+      <h3>…and the rest</h3>
+      <p>Login forms, to-do apps, a job aggregator and plenty more. It's all still on GitHub.</p>
+    </a>
+  </div>
+</section>
+
+<section id="youtube" class="wrap reveal">
+  <p class="label mono">03 / youtube</p>
+  <h2>Five years of explaining things.</h2>
+  <div class="yt-head">
+    <p class="intro">From 2019 to 2024 I ran Packetcode, a YouTube channel where I taught programming concepts in the easiest way I could, from Git and Docker to face recognition in Python.</p>
+    <a class="channel panel lift" href="https://www.youtube.com/@packetcode?sub_confirmation=1" target="_blank" rel="noopener">
+      <img src="logos/packetcode.jpg" alt="" width="56" height="56">
+      <span class="channel-info"><b>Packetcode</b><span>@packetcode · 17.4K subscribers</span></span>
+      <span class="subscribe">Subscribe</span>
+    </a>
+  </div>
+  <div class="videos">
+    <a class="video panel lift" href="https://www.youtube.com/watch?v=KI55G4FzDY0" target="_blank" rel="noopener">
+      <div class="thumb"><img src="https://i.ytimg.com/vi/KI55G4FzDY0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"></div>
+      <p>Docker Crash Course</p>
+    </a>
+    <a class="video panel lift" href="https://www.youtube.com/watch?v=q3scbgkw3lo" target="_blank" rel="noopener">
+      <div class="thumb"><img src="https://i.ytimg.com/vi/q3scbgkw3lo/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"></div>
+      <p>Face Recognition using OpenCV</p>
+    </a>
+    <a class="video panel lift" href="https://www.youtube.com/watch?v=wEAj_xPXeOs" target="_blank" rel="noopener">
+      <div class="thumb"><img src="https://i.ytimg.com/vi/wEAj_xPXeOs/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"></div>
+      <p>Complete Git Crash Course</p>
+    </a>
+    <a class="video panel lift" href="https://www.youtube.com/watch?v=0RmktpIrKJY" target="_blank" rel="noopener">
+      <div class="thumb"><img src="https://i.ytimg.com/vi/0RmktpIrKJY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"></div>
+      <p>Jenkins Crash Course</p>
+    </a>
+  </div>
+</section>
+
+<section id="work" class="wrap reveal">
+  <p class="label mono">04 / day job</p>
+  <h2>Where I build for a living.</h2>
+  <div class="work">
+    <article class="job panel">
+      <div class="head">
+        <img src="logos/matillion.png" alt="Matillion logo" width="44" height="44">
+        <h3>Matillion <small>Software Engineer</small></h3>
+        <p class="when mono">2025 → now</p>
       </div>
+      <p class="desc">I worked on the multi-tenant Connections framework and moved 55K+ customer projects onto it. I also built a memory layer for Claude Code that started as a hackday project and caught on with the team.</p>
+    </article>
+    <article class="job panel">
+      <div class="head">
+        <img src="logos/prefr.svg" alt="Prefr logo" width="44" height="44">
+        <h3>Prefr <small>Software Engineer</small></h3>
+        <p class="when mono">2021 → 2025</p>
+      </div>
+      <p class="desc">A lending app, now part of CRED. I worked on the services behind credit applications: a Vert.x rewrite that cut response times by 40%, a NATS pipeline for SMS, WhatsApp and email updates, and the credit bureau integrations.</p>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="mono kicker">want to stay connected?</p>
+    <p class="say"><a href="mailto:kamaltejag@gmail.com">Say hi ↗</a></p>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/kamaltejag/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/kamaltejag" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://youtube.com/packetcode" target="_blank" rel="noopener">YouTube</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
     </div>
+    <div class="fine mono"><span>Kamal Teja</span><span>© 2026</span></div>
+  </div>
+</footer>
 
-    <!-- About Section -->
-    <div id="about" class="container about p-5">
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <img src="images/about_img.svg" class="img-fluid" />
-        </div>
-        <div class="col-md-6 col-sm-12 pl-md-5 pt-5 pb-md-5 text-white">
-          <h3 class="text-warning">About Me</h3>
-          <h1 class="m-heading">I'm a Web Developer</h1>
-          <p>
-            I had started web development 2 years back and have created many test projects and official 
-            projects, as I strongly believe in the motto of <b>"Learning by doing"</b>. I really like 
-            testing and implementing different things as it makes the process of web development more enjoyable.
-          </p>
-          <br />
-          <p>
-            For the past year I have been running a Youtube channel called <b>Packetcode</b>, 
-            the main idea behind this is to make programming easy, simple and fun for everyone.
-         </p>
-          <a class="btn btn-outline-warning" href="https://www.linkedin.com/in/kamal-teja-157111168/" target="_blank">
-            Learn More
-          </a>
-        </div>
-      </div>
-    </div>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js" integrity="sha384-R18XzqnxvVLEF+BYfhpmDx30v7eP83fAckyfoRzK7/Uf6nGqufcmsk0eAKo7S3RU" crossorigin="anonymous"></script>
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO='IntersectionObserver' in window;
+  var navH=document.querySelector('nav').offsetHeight;
 
-    <div id="projects" class="container mt-5 pt-5">
-      <h1 class="text-warning mb-3 pb-3 m-heading">My Projects</h1>
-      <div class="row">
-        <div class="col-12 col-md-4 mb-5 d-flex justify-content-center">
-          <div class="card" style="width: 18rem;">
-            <img
-              src="images/corona-tracker.svg"
-              class="card-img-top p-3"
-              style="height: 13rem;"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title text-warning ">COVID-19 Tracker</h5>
-              <p class="card-text">
-                This is a COVID-19 tracker web app which takes the data from the public API <b>CSSEGISandData</b> provided by <b>Johns Hopkins University</b>. 
-                In this tracker we take the data from this API using <b>PHP</b> and parse it and display it on the frontend in a table. 
-              </p>
-              <div class="row">
-                <div class="col-6">
-                  <a href="https://github.com/kamaltejag/corona-tracker"  target="_blank" class="btn btn-warning d-flex justify-content-center">Code</a>
-                </div>
-                <div class="col-6">
-                  <a href="https://packetcode.in/apps/corona-tracker/"  target="_blank" class="btn btn-dark d-flex justify-content-center"">View</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4 mb-5 d-flex justify-content-center">
-          <div class="card" style="width: 18rem;">
-            <img
-              src="images/disappr.svg"
-              class="card-img-top p-3"
-              alt="..."
-              style="height: 13rem;"
-            />
-            <div class="card-body">
-              <h5 class="card-title text-warning ">Disappr</h5>
-              <p class="card-text" style="min-height:12rem">
-                The main idea behind this project is to share messages <b>anonymously</b> and <b>securely</b>.
-                All the messages created and shared using this web app are <b>time bound</b> i.e. these messages automatically disappear after 24hhrs.
-              </p>
-              <div class="row align-self-end">
-                <div class="col-6">
-                  <a href="https://github.com/kamaltejag/disappr" target="_blank"  class="btn btn-warning d-flex justify-content-center">Code</a>
-                </div>
-                <div class="col-6">
-                  <a href="http://packetcode.in/apps/disappr/"  target="_blank" class="btn btn-dark d-flex justify-content-center"">View</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4 mb-5 d-flex justify-content-center">
-          <div class="card" style="width: 18rem;">
-            <img
-              src="images/corona-tracker-india.svg"
-              class="card-img-top p-3"
-              alt="..."
-              style="height: 13rem;"
-            />
-            <div class="card-body">
-              <h5 class="card-title text-warning ">COVID-19 Tracker India</h5>
-              <p class="card-text">
-                This is a COVID-19 tracker web app which takes the data from the public API <b>covid19india</b>, open sourced by the people in india. 
-                In this tracker we take the data from this API using <b>Javascript</b>, parse it and display it on the frontend in the form of a chart using Chart.js. 
-              </p>
-              <div class="row">
-                <div class="col-6">
-                  <a href="https://github.com/kamaltejag/corona-tracker-india" target="_blank"  class="btn btn-warning d-flex justify-content-center">Code</a>
-                </div>
-                <div class="col-6">
-                  <a href="https://packetcode.github.io/projects/corona-tracker-india/" target="_blank"  class="btn btn-dark d-flex justify-content-center"">View</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4 mb-5 d-flex justify-content-center">
-          <div class="card" style="width: 18rem;">
-            <img
-              src="images/job-aggregator.svg"
-              class="card-img-top p-3"
-              alt="..."
-              style="height: 13rem;"
-            />
-            <div class="card-body">
-              <h5 class="card-title text-warning ">Job Aggregator</h5>
-              <p class="card-text">
-                The motive behind this project is to bridge the gap between the employer and the employee.
-                This is a simple web app where we post many available <b>job postings</b> in various companies and anyone can signup and <b>apply</b> for that job from this web app.
-              </p>
-              <div class="row">
-                <div class="col-6">
-                  <a href="https://github.com/kamaltejag/job-aggregator" target="_blank" class="btn btn-warning d-flex justify-content-center">Code</a>
-                </div>
-                <div class="col-6">
-                  <a href="http://packetcode.in/apps/job-aggregator/" target="_blank"  class="btn btn-dark d-flex justify-content-center"">View</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4 mb-5 d-flex justify-content-center">
-          <div class="card" style="width: 18rem;">
-            <img
-              src="images/pomodoro-timer.svg"
-              class="card-img-top p-3"
-              alt="..."
-              style="height: 13rem;"
-            />
-            <div class="card-body">
-              <h5 class="card-title text-warning ">Pomodoro Timer</h5>
-              <p class="card-text">
-                This is a simple web app which can be used to follow the <b>Pomodoro Technique</b> i.e. this contains a timer in it, which is preset to <b>25mins</b>. 
-                You can start the timer, do your work and once the timer hits zero, it rings a bell implying the end of the session. 
-              </p>
-              <div class="row">
-                <div class="col-6">
-                  <a href="https://github.com/kamaltejag/pomodoro" target="_blank"  class="btn btn-warning d-flex justify-content-center">Code</a>
-                </div>
-                <div class="col-6">
-                  <a href="https://packetcode.github.io/projects/pomodoro/"  target="_blank" class="btn btn-dark d-flex justify-content-center"">View</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4 mb-5 d-flex justify-content-center">
-          <div class="card" style="width: 18rem;">
-            <img
-              src="images/social-wall.svg"
-              class="card-img-top p-3"
-              alt="..."
-              style="height: 13rem;"
-            />
-            <div class="card-body">
-              <h5 class="card-title text-warning ">Social Wall</h5>
-              <p class="card-text" style="min-height:12rem">
-                This is a platform where people can <b>share anything</b> that they want. This is similar to the Facebook wall but much simpler. 
-                Here anyone can signup and share any link or video or photo that they want others in the <b>community</b> to see.
-              </p>
-              <div class="row">
-                <div class="col-6">
-                  <a href="https://github.com/kamaltejag/social-wall"  target="_blank" class="btn btn-warning d-flex justify-content-center">Code</a>
-                </div>
-                <div class="col-6">
-                  <a href="http://packetcode.in/apps/social-wall/" target="_blank"  class="btn btn-dark d-flex justify-content-center"">View</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  if(window.Lenis&&!reduceMotion){new Lenis({autoRaf:true,anchors:{offset:-navH}});}
 
-    <div id="social-media" class="container-fluid">
-      <div class="container text-white py-5">
-        <h4 class="text-warning">Social Media</h4>
-        <h1 class="m-heading">Let's be friends</h1>
-        <div class="row pt-5 d-flex justify-content-center">
+  var track=document.querySelector('.ticker-track');
+  if(!reduceMotion){
+    [].slice.call(track.children).forEach(function(el){track.appendChild(el.cloneNode(true))});
+    track.classList.add('loop');
+  }
 
-          <div class="col-12 col-md-3 mt-md-3 media_link btn">
-            <a
-            href="https://www.linkedin.com/in/kamal-teja-157111168/"
-            target="_blank" class="text-decoration-none"
-          >
-              <div class="row">
-                <div class="col-6 d-flex justify-content-start">
-                  <h3 class="m-0 pt-2 text-white">LinkedIn</h3>
-                </div>
-                <div
-                  class="col-6 d-flex justify-content-end align-items-center"
-                >
-                  <i class="fab fa-linkedin-in fa-2x text-secondary"></i>
-                </div>
-              </div>
-            </a>
-          </div>
+  var btn=document.getElementById('theme'),themeMeta=document.querySelector('meta[name="theme-color"]');
+  var syncTheme=function(){
+    var dark=root.getAttribute('data-theme')==='dark';
+    themeMeta.setAttribute('content',getComputedStyle(root).getPropertyValue('--bg').trim());
+    btn.setAttribute('aria-label','Switch to '+(dark?'light':'dark')+' theme');
+  };
+  syncTheme();
+  btn.addEventListener('click',function(){
+    var next=root.getAttribute('data-theme')==='light'?'dark':'light';
+    var apply=function(){root.setAttribute('data-theme',next);syncTheme();try{localStorage.setItem('theme',next);}catch(e){}};
+    if(!document.startViewTransition||reduceMotion){apply();return;}
+    var r=btn.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+    document.startViewTransition(apply).ready.then(function(){
+      var end=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+      root.animate({clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+end+'px at '+x+'px '+y+'px)']},{duration:600,easing:'cubic-bezier(0.4, 0, 0.2, 1)',pseudoElement:'::view-transition-new(root)'});
+    });
+  });
 
+  var navLinks=[].slice.call(document.querySelectorAll('.links a[href^="#"]'));
+  var setActive=function(id){navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id)})};
+  navLinks.forEach(function(a){a.addEventListener('click',function(){setActive(a.getAttribute('href').slice(1))})});
 
-        
-          <div class="col-12 col-md-3 mt-3 media_link btn">
-            <a href="https://github.com/kamaltejag" target="_blank" class="text-decoration-none">
-              <div class="row">
-                <div class="col-6 d-flex justify-content-start">
-                  <h3 class="m-0 pt-2 text-white">Github</h3>
-                </div>
-                <div
-                  class="col-6 d-flex justify-content-end align-items-center"
-                >
-                  <i class="fab fa-github fa-2x text-secondary"></i>
-                </div>
-              </div>
-            </a>
-          </div>
-
-
-        
-          <div class="col-12 col-md-3 mt-3 media_link btn">
-            <a href="https://youtube.com/packetcode" target="_blank" class="text-decoration-none" >
-              <div class="row">
-                <div class="col-6 d-flex justify-content-start">
-                  <h3 class="m-0 pt-2 text-white">Youtube</h3>
-                </div>
-                <div
-                  class="col-6 d-flex justify-content-end align-items-center"
-                >
-                  <i class="fab fa-youtube fa-2x text-secondary"></i>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-12 col-md-3 mt-3 media_link bg-warning btn">
-            <div onclick="openEmail();">
-              <div class="row">
-                <div class="col-6 d-flex justify-content-start">
-                  <h3 class="m-0 pt-2 text-dark">Email</h3>
-                </div>
-                <div
-                  class="col-6 d-flex justify-content-end align-items-center"
-                >
-                  <i class="fas fa-envelope fa-2x text-secondary"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="mailId" class="bg-warning">
-          <h3 id="mailIdText" class="m-0"></h3>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <div class="container text-muted text-center py-3 mt-5">
-        <h5>
-          Copyright &copy; 2020 |
-          <a class="text-warning text-decoration-none" href="#about"
-            >Kamal Teja</a
-          >
-        </h5>
-      </div>
-    </footer>
-  </body>
+  var reveals=[].slice.call(document.querySelectorAll('.reveal'));
+  if(!hasIO){reveals.forEach(function(el){el.classList.add('in')});return;}
+  var spy=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setActive(e.target.id)})},{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section[id]').forEach(function(s){spy.observe(s)});
+  new IntersectionObserver(function(es){if(es[0].isIntersecting)setActive('')},{rootMargin:'0px 0px -60% 0px'}).observe(document.getElementById('top'));
+  var reveal=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');reveal.unobserve(e.target)}})},{threshold:.12});
+  reveals.forEach(function(el){reveal.observe(el)});
+})();
+</script>
+</body>
 </html>
